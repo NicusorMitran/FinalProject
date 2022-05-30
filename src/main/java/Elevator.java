@@ -1,4 +1,3 @@
-// 12:26
 
 import java.util.ArrayList;
 import java.util.Scanner;
