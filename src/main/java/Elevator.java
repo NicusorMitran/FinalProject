@@ -3,10 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Elevator {
-    public static void main(String[] args) {
-        Elevator e = new Elevator();
-        e.askPassenger();
-    }
 
     //variables
     Scanner intel = new Scanner(System.in);
@@ -36,7 +32,7 @@ public class Elevator {
         System.out.println("Elevator opening...");
             delay(1500);
             isDoorOpen = true;
-        System.out.print(curF + "F | How many passengers: ");
+        System.out.print("How many passengers: ");
             numOfPass = intel.nextInt();
             if (numOfPass < minP || numOfPass > maxP){
             System.out.println("Error. Valid nr of passengers [1-7]");
@@ -61,9 +57,9 @@ public class Elevator {
             System.out.print("Passenger #" + (id+1) + " enter your floor: ");
             floor = intel.nextInt();
             if (floor < minF || floor > maxF) {
-                System.out.println("Error. You have entered out of range floor. [1-20]");
+                System.out.println("You have entered out of range floor.");
             } else if (floor == curF) {
-                System.out.println("You are already in the " + curF + "F.");
+                System.out.println("You are already in the " + curF + "Floor.");
             }else {
                 destination_lists[floor-1]++;
                 isValidEntry = true;
@@ -74,7 +70,7 @@ public class Elevator {
     void initialize_elevator(){
         for (int a=0;a<listOFFloors.size();a++){
             int shortest = findShortest();
-            System.out.println("Next destination: " + shortest + "F Passenger amount " + destination_lists[shortest-1]);
+            System.out.println("Next destination  Floor #" + shortest + ". Passenger amount " + destination_lists[shortest-1]);
             delay(1500);
             while (curF < shortest) {
                 up();
@@ -83,7 +79,7 @@ public class Elevator {
                 down();
             }
             while (destination_lists[shortest-1] > 0) {
-                System.out.println("Unloading passenger " + destination_lists[shortest-1]-- + " at " + curF + "F");
+                System.out.println("Unloading passenger " + destination_lists[shortest-1]-- + " at " + "Floor #" +curF);
                 delay(1500);
             }
         }
@@ -91,11 +87,11 @@ public class Elevator {
     }
 
     void up() {
-        System.out.println(curF++ + "F | Going up...");
+        System.out.println(" Going up to #" + curF++ +" Floor" );
     }
 
     void down() {
-        System.out.println(curF-- + "F | Going down...");
+        System.out.println(" Going down to #" + curF-- +" Floor" );
     }
 
     void delay(int ms) {
